@@ -14,7 +14,7 @@ router.post("/signup", wrapAsync (async(req, res) => {
         let {username, email, password} = req.body;
         const newUser = new User({email, username});
         const registeredUser = await User.register(newUser, password);
-        req.flash("success", "Welcome to WanderLust!");
+        req.flash("success", "Welcome to StayNest!");
         res.redirect("/listings");
     } catch(err) {
         req.flash("error", err.message);
@@ -30,7 +30,7 @@ router.get("/login", (req, res) => {
 
 
 router.post("/login", passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), wrapAsync (async(req, res) => {
-    res.flash("success", "Welcome back to WanderLust!");
+    res.flash("success", "Welcome back to StayNest!");
     res.redirect("/listings");
 }));
 
