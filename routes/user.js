@@ -42,7 +42,7 @@ router.post("/login", saveRedirectUrl, passport.authenticate('local', { failureR
 });
 
 
-router.get("/layout", (req, res) => {
+router.get("/logout", (req, res, next) => {
     req.logout((err) => {
         if (err) {
             return next(err);
